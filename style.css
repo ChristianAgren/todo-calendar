@@ -4,6 +4,7 @@
     #a9abad bombay
     #696c6e nevada
     #2ccd4d emerald
+    #5c75a3 waikava grey
 */
 /*
     font-family: 'Oxygen', sans-serif;
@@ -31,24 +32,23 @@ body {
   background: #252a2e;
 }
 
-header,
 main {
   width: 100%;
-
 }
 
-header {
-    width: 75%;
-    height: 5%;
-    margin-left: auto;
-    
+.cal-header {
+    background: #5c75a3;
     color: #fefefe;
     
   display: flex;
   justify-content: center;
   align-items: center;
 }
-header button {
+.cal-header h2 {
+    font-size: 2rem;
+}
+
+#left, #right {
     cursor: pointer;
 
     border: none;
@@ -65,7 +65,7 @@ main {
   height: 95%;
   display: grid;
 
-  background: #a9abad;
+  background: #edf0f1;
 
   grid-template-columns: 25% auto;
   grid-auto-rows: 1fr;
@@ -75,7 +75,9 @@ main > * {
 }
 
 .sidebar {
-    background: #696c6e;
+    background: #2c3235;
+
+    color: #fefefe;
 
     display: flex;
     flex-direction: column;
@@ -87,6 +89,14 @@ main > * {
 
     text-align: center;
 }
+h1 {
+    margin: .5rem;
+    padding: 0 .5rem;
+    color: #fefefe;
+    
+    border: .2rem solid #fefefe;
+}
+
 h2 {
     font-size: 7rem;
 }
@@ -106,10 +116,10 @@ h3 {
 
 
 /*### calendar ###*/
-.calendar {
-    padding: .5rem;
 
+.calendar {
   height: 100%;
+
   display: grid;
   grid-template-rows: 3rem auto;
 }
@@ -133,6 +143,7 @@ h3 {
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
   gap: 0.2rem;
+  margin: .5rem;
 }
 
 /* GRID-ITEMS (VECKODAGAR) */
@@ -147,10 +158,16 @@ div.active-item {
     background: #fefefe;
     border-radius: .5rem;
     padding: 1rem;
+    border: 0rem solid #a9abad;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: .25s ease;
+}
+.grid-item:hover {
+    border: .2rem solid #2ccd4d;
 }
 
 
