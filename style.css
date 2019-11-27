@@ -1,0 +1,177 @@
+/*
+    #fefefe white
+    #252a2e shark
+    #a9abad bombay
+    #696c6e nevada
+    #2ccd4d emerald
+*/
+/*
+    font-family: 'Oxygen', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
+*/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* {
+  /* background: #ff525255; */
+}
+
+html {
+  font-size: 100%;
+  font-family: "Oxygen", sans-serif;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  background: #252a2e;
+}
+
+header,
+main {
+  width: 100%;
+
+}
+
+header {
+    width: 75%;
+    height: 5%;
+    margin-left: auto;
+    
+    color: #fefefe;
+    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header button {
+    cursor: pointer;
+
+    border: none;
+    background: #fff0;
+    color: #fefefe;
+
+    padding: .5rem;
+    margin: 0 5vw;
+
+}
+
+
+main {
+  height: 95%;
+  display: grid;
+
+  background: #a9abad;
+
+  grid-template-columns: 25% auto;
+  grid-auto-rows: 1fr;
+}
+main > * {
+  /* border: 1px solid white; */
+}
+
+.sidebar {
+    background: #696c6e;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidebar-heading {
+    width: 100%;
+    padding: 1rem;
+
+    text-align: center;
+}
+h2 {
+    font-size: 7rem;
+}
+h3 {
+    font-size: 2rem;
+
+    border-bottom: .1rem solid #fefefe;
+}
+.sidebar ul {
+    list-style: circle;
+
+    padding-left: 2rem;
+}
+.button-wrapper, input[type="button"] {
+    padding: .2rem;
+}
+
+
+/*### calendar ###*/
+.calendar {
+    padding: .5rem;
+
+  height: 100%;
+  display: grid;
+  grid-template-rows: 3rem auto;
+}
+
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.2rem;
+
+  margin-bottom: 0.2rem;
+}
+.week-grid > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cal-grid {
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0.2rem;
+}
+
+/* GRID-ITEMS (VECKODAGAR) */
+
+div.active-item {
+    background: #696c6e;
+}
+
+.grid-item {
+    position: relative;
+
+    background: #fefefe;
+    border-radius: .5rem;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.grid-item h5 {
+    font-size: 3rem;
+}
+.grid-item p {
+    position: absolute;
+    top: .2rem;
+    text-align: center;
+}
+.grid-item ul {
+    position: absolute;
+    bottom: 0;
+
+
+    padding: .2rem;
+    list-style: none;
+
+    display: flex;
+}
+.grid-item ul li::before {
+    content: "\25cf";
+}
