@@ -38,29 +38,45 @@ main {
 }
 
 .cal-header {
-    background: #5c75a3;
-    color: #fefefe;
-    
+  background: #5c75a3;
+  color: #fefefe;
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cal-header h2 {
-    font-size: 2rem;
+.year-month {
+  position: relative;
+  width: 40%;
+  margin-top: .5rem;
+
+  text-align: center;
+}
+.year-month h2 {
+  font-size: 2rem;
+}
+.year-month h5 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  margin-top: -.7rem;
+  font-size: 1rem;
+
+  transform: translateX(-50%);
 }
 
-#left, #right {
-    cursor: pointer;
+#left,
+#right {
+  cursor: pointer;
 
-    border: none;
-    background: #fff0;
-    color: #fefefe;
+  border: none;
+  background: #fff0;
+  color: #fefefe;
 
-    padding: .5rem;
-    margin: 0 5vw;
-
+  padding: 0.5rem;
+  margin: 0 5vw;
 }
-
 main {
   height: 95%;
   display: grid;
@@ -70,14 +86,6 @@ main {
   grid-template-columns: 25% auto;
   grid-auto-rows: 1fr;
 }
-main > * {
-  /* border: 1px solid white; */
-}
-
-.button-wrapper, input[type="button"] {
-    padding: .2rem;
-}
-
 
 /*### calendar ###*/
 
@@ -85,74 +93,60 @@ main > * {
   height: 100%;
 
   display: grid;
-  grid-template-rows: 3rem auto;
-}
-
-.week-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.2rem;
-
-  margin-bottom: 0.2rem;
-}
-.week-grid > * {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  grid-template-rows: 4rem auto;
 }
 
 .cal-grid {
+  margin: 0.5rem;
 
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
   gap: 0.2rem;
-  margin: .5rem;
 }
 
 /* GRID-ITEMS (VECKODAGAR) */
 
 div.active-item {
-    background: #696c6e;
+  background: #696c6e;
 }
 
 .grid-item {
-    position: relative;
-
-    background: #fefefe;
-    border-radius: .5rem;
-    padding: 1rem;
-    border: 0rem solid #a9abad;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: .25s ease;
+  position: relative;
+  
+  background: #fefefe;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 0rem solid #a9abad;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  cursor: pointer;
+  transition: 0.25s ease;
 }
 .grid-item:hover {
-    border: .2rem solid #2ccd4d;
+  border: 0.2rem solid #2ccd4d;
 }
-
 
 .grid-item h5 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 .grid-item p {
-    position: absolute;
-    top: .2rem;
-    text-align: center;
+  position: absolute;
+  top: 0.2rem;
+  text-align: center;
 }
 .grid-item ul {
-    position: absolute;
-    bottom: 0;
+  position: absolute;
+  bottom: 0;
 
+  padding: 0.2rem;
+  list-style: none;
 
-    padding: .2rem;
-    list-style: none;
-
-    display: flex;
+  display: flex;
 }
 .grid-item ul li::before {
-    content: "\25cf";
+  content: "\25cf";
 }
