@@ -1,4 +1,3 @@
-window.addEventListener('load', defineClock)
 
 /**
  * Defines the hours and minutes of the current time
