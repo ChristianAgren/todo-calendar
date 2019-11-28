@@ -18,9 +18,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-* {
-  /* background: #ff525255; */
-}
+
 
 html {
   font-size: 100%;
@@ -76,7 +74,6 @@ main {
   padding: 0.5rem;
   margin: 0 5vw;
 }
-
 main {
   height: 95%;
   display: grid;
@@ -85,47 +82,6 @@ main {
 
   grid-template-columns: 25% auto;
   grid-auto-rows: 1fr;
-}
-
-.sidebar {
-  background: #2c3235;
-  color: #fefefe;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.sidebar-heading {
-  width: 100%;
-  padding: 1rem;
-
-  text-align: center;
-}
-.sidebar-heading h1 {
-  margin: 0.5rem;
-  padding: 0 0.5rem;
-  color: #fefefe;
-
-  border: 0.2rem solid #fefefe;
-}
-.sidebar-heading h2 {
-  font-size: 7rem;
-}
-.sidebar-heading h3 {
-  font-size: 2rem;
-
-  padding-bottom: 0.5rem;
-  border-bottom: 0.1rem solid #fefefe;
-  margin-bottom: 0.5rem;
-}
-.sidebar ul {
-  list-style: circle;
-
-  padding-left: 2rem;
-}
-.button-wrapper,
-input[type="button"] {
-  padding: 0.2rem;
 }
 
 /*### calendar ###*/
