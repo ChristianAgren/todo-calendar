@@ -1,0 +1,7 @@
+div.calendar {
+    display: grid;
+}
+
+main {
+    grid-template-columns: 25% auto;
+}

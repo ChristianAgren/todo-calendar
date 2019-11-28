@@ -78,12 +78,13 @@ main {
   margin: 0 5vw;
 }
 main {
-  height: 95%;
+  height: 100%;
   display: grid;
 
   background: #edf0f1;
 
-  grid-template-columns: 25% auto;
+  grid-template-columns: 100% auto;
+  
   grid-auto-rows: 1fr;
 }
 
@@ -92,7 +93,7 @@ main {
 .calendar {
   height: 100%;
 
-  display: grid;
+  display: none;
   grid-template-rows: 4rem auto;
 }
 
