@@ -4,22 +4,26 @@
  */
 function defineClock() {
     const   date = new Date(),
+            day = date.getDate(),
+            month = date.getMonth() + 1,
             hours = date.getHours(),
-            mins = date.getMinutes();
+            mins = date.getMinutes();            
 
-    buildClock(hours, mins)
+    buildClock(day, month, hours, mins)
 }
 
 /**
  * Builds the appearance of the clock
+ * @param {Number} day Current day generated from date function
+ * @param {Number} month Current month generated from date function
  * @param {Number} hours Time in hours generated from date function
  * @param {Number} mins Time in minutes generated from date function
  */
-function buildClock(hours, mins) {
+function buildClock(day, month, hours, mins) {
     hours = (hours < 10) ? "0" + hours : hours;
     mins = (mins < 10) ? "0" + mins : mins;
 
-    const time = hours + ":" + mins;
+    const time = month + "-" + day + " " + hours + ":" + mins;
     showClock(time)
 }
 
