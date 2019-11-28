@@ -29,10 +29,63 @@ h2 {
     text-align: center;
 }
 
-.sidebar ul {
-    list-style: circle;
+.add-todo {
+    margin: 1rem;
 
-    padding-left: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.add-todo input {
+    width: 60%;
+    padding: .6rem;
+    border: none;
+}
+
+.add-todo button {
+    margin-left: .4rem;
+
+    padding: 0 1rem;
+    border: none;
+    background: #2ccd4d;
+    color: #004E00;
+}
+
+.todo-list {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo-list li {
+    position: relative;
+    margin: .4rem;
+    min-width: 75%;
+    padding: .4rem;
+
+}
+
+.todo-list li, .add-todo input {
+    color: #252a2e;
+    background-color: #fefefe;
+}
+
+.todo-list li, .add-todo input, .add-todo button {
+    border-radius: .5rem;
+}
+
+.todo-list .material-icons {
+    color: #fefefe;
+}
+
+.delete-icon {
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%)
 }
 
 /* CLOCK */
@@ -40,7 +93,7 @@ h2 {
 .clock {
     position: absolute;
     top: 1.2rem;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
     font-size: 2rem;
+    text-align: center;
 }
