@@ -149,13 +149,16 @@ input[type="button"] {
 /* GRID-ITEMS (VECKODAGAR) */
 
 div.active-item {
-  background: #696c6e;
+  background: #aa5555;
+}
+div.active-item:hover {
+  background: #ff5252;
 }
 
 .grid-item {
   position: relative;
   
-  background: #fefefe;
+  background: #888;
   border-radius: 0.5rem;
   padding: 1rem;
   border: 0rem solid #a9abad;
@@ -168,7 +171,7 @@ div.active-item {
   transition: 0.25s ease;
 }
 .grid-item:hover {
-  border: 0.2rem solid #2ccd4d;
+  background: #bbb;
 }
 
 .grid-item h5 {
