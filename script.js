@@ -5,4 +5,3 @@ function init() {
   defineClock();
   defineTODOs();
 }
-
