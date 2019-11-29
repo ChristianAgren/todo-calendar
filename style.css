@@ -19,7 +19,6 @@
   box-sizing: border-box;
 }
 
-
 html {
   font-size: 100%;
   font-family: "Oxygen", sans-serif;
@@ -45,7 +44,7 @@ main {
 .year-month {
   position: relative;
   width: 40%;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 
   text-align: center;
 }
@@ -57,7 +56,7 @@ main {
   top: 0;
   left: 50%;
 
-  margin-top: -.7rem;
+  margin-top: -0.7rem;
   font-size: 1rem;
 
   transform: translateX(-50%);
@@ -104,41 +103,38 @@ main {
 
 /* GRID-ITEMS (VECKODAGAR) */
 
+.grid-item,
 div.active-item {
-  background: #aa5555;
-}
-div.active-item:hover {
-  background: #ff5252;
-}
-
-.grid-item {
   position: relative;
-  
+
   background: #888;
   border-radius: 0.5rem;
   padding: 1rem;
   border: 0rem solid #a9abad;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   cursor: pointer;
   transition: 0.25s ease;
 }
 .grid-item:hover {
-  background: #bbb;
+  box-shadow:inset 0 0 1rem 0 #333;
 }
 
-.grid-item h5 {
+div.active-item {
+  background: #aa5555;
+}
+.grid-item h5, div.active-item h5 {
   font-size: 3rem;
 }
-.grid-item p {
+.grid-item p, div.active-item p {
   position: absolute;
   top: 0.2rem;
   text-align: center;
 }
-.grid-item ul {
+.grid-item ul, div.active-item ul {
   position: absolute;
   bottom: 0;
 
@@ -147,6 +143,6 @@ div.active-item:hover {
 
   display: flex;
 }
-.grid-item ul li::before {
+.grid-item ul li::before, div.active-item ul li::before {
   content: "\25cf";
 }

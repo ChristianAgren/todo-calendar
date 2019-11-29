@@ -7,7 +7,6 @@ async function logData() {
 
   updateMonth(myJson, monthIndex, year);
   mouseEvents(myJson, monthIndex, year);
-  toggleSelectedGridItem();
 }
 
 function buildCalendar(myJson, months, monthIndex) {
@@ -16,9 +15,11 @@ function buildCalendar(myJson, months, monthIndex) {
       dag.datum.split("-")[1] ===
       months.number[monthIndex % months.number.length]
     ) {
+      
       createDayCard(dag);
     }
   });
+  toggleSelectedGridItem();
 }
 
 function updateMonth(myJson, monthIndex, year) {
@@ -112,8 +113,4 @@ function mouseEvents(myJson, monthIndex, year) {
       }
     });
   });
-
-//   $(".grid-item").click( function() {
-//       $(this).toggleClass("active-item")
-//   })
 }
