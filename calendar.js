@@ -87,7 +87,7 @@ function createDayCard(dag) {
 }
 
 function mouseEvents(myJson, monthIndex, year) {
-  let buttons = document.querySelectorAll("button");
+  let buttons = document.querySelectorAll(".cal-header button");
 
   (monthIndex = 11), (year = 2019);
 
