@@ -12,6 +12,7 @@ async function logData() {
 function buildCalendar(myJson, months, monthIndex) {
   myJson.dagar.forEach(dag => {
     if (
+        
       dag.datum.split("-")[1] ===
       months.number[monthIndex % months.number.length]
     ) {
