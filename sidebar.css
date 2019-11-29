@@ -1,14 +1,6 @@
 
 /* GLOBAL */
 
-h1 {
-    margin: .5rem;
-    padding: 0 .5rem;
-    color: #fefefe;
-    
-    border: .2rem solid #fefefe;
-}
-
 h2 {
     font-size: 4rem;
 }
@@ -29,24 +21,91 @@ h2 {
 /* SIDEBAR ITEMS */
 
 .sidebar-heading {
+    margin-top: 3rem;
+
     width: 100%;
     padding: 1rem;
 
     text-align: center;
 }
 
-.sidebar ul {
-    list-style: circle;
+.add-todo {
+    margin: 1rem;
 
-    padding-left: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.add-todo input {
+    width: 60%;
+    padding: .6rem;
+    border: none;
+}
+
+.add-todo button {
+    margin-left: .4rem;
+
+    padding: 0 1rem;
+    border: none;
+    background: linear-gradient(#2ccd4d, rgb(0, 105, 0));
+    color: #8fffa5;
+    cursor: pointer;
+}
+
+.add-todo button > i {
+    text-shadow: #004E00 0 0 4px;
+}
+
+.todo-list {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo-list li {
+    position: relative;
+    margin: .4rem;
+    min-width: 70%;
+    padding: .4rem;
+
+}
+
+.todo-list li, .add-todo input {
+    color: #252a2e;
+    background-color: #fefefe;
+}
+
+.todo-list li, .add-todo input, .add-todo button {
+    border-radius: .5rem;
+    box-shadow: #131618 3px 3px 3px;
+}
+
+.todo-list .material-icons {
+    color: #fefefe;
+    padding: .2rem;
+    font-size: 1.2rem;
+}
+
+.delete-icon {
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: radial-gradient(red 40%, rgb(168, 0, 0)) ;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 /* CLOCK */
 
 .clock {
     position: absolute;
-    top: .5rem;
-    right: 5%;
-    height: 20%;
-    font-size: 2rem;
+    top: 1.2rem;
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
 }
