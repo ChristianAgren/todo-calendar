@@ -48,8 +48,13 @@ h2 {
 
     padding: 0 1rem;
     border: none;
-    background: #2ccd4d;
-    color: #004E00;
+    background: linear-gradient(#2ccd4d, rgb(0, 105, 0));
+    color: #8fffa5;
+    cursor: pointer;
+}
+
+.add-todo button > i {
+    text-shadow: #004E00 0 0 4px;
 }
 
 .todo-list {
@@ -63,7 +68,7 @@ h2 {
 .todo-list li {
     position: relative;
     margin: .4rem;
-    min-width: 75%;
+    min-width: 70%;
     padding: .4rem;
 
 }
@@ -75,17 +80,24 @@ h2 {
 
 .todo-list li, .add-todo input, .add-todo button {
     border-radius: .5rem;
+    box-shadow: #131618 3px 3px 3px;
 }
 
 .todo-list .material-icons {
     color: #fefefe;
+    padding: .2rem;
+    font-size: 1.2rem;
 }
 
 .delete-icon {
     position: absolute;
     left: -2rem;
     top: 50%;
-    transform: translateY(-50%)
+    transform: translateY(-50%);
+
+    background: radial-gradient(red 40%, rgb(168, 0, 0)) ;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 /* CLOCK */
@@ -94,6 +106,6 @@ h2 {
     position: absolute;
     top: 1.2rem;
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
 }
