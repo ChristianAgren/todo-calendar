@@ -32,8 +32,6 @@ function buildClock(day, month, hours, mins) {
  * @param {String} time The generated timestring
  */
 function showClock(time) {
-    document.querySelector('div.clock').innerText = time
-    console.log(time);
-    
+    document.querySelector('div.clock').innerText = time    
     setTimeout(defineClock, 1000)
 }

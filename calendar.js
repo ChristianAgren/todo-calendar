@@ -12,12 +12,10 @@ async function logData() {
 function buildCalendar(myJson, months, monthIndex) {
   myJson.dagar.forEach(dag => {
     if (
-        
       dag.datum.split("-")[1] ===
       months.number[monthIndex % months.number.length]
-    ) {
-      
-      createDayCard(dag);
+    ) {      
+      createDayCard(dag);      
     }
   });
   toggleSelectedGridItem();
@@ -74,11 +72,19 @@ function createDayCard(dag) {
   const div = document.createElement("div"),
     h5 = document.createElement("h5"),
     p = document.createElement("p");
-
   div.classList.add("grid-item");
-
   div.append(p);
   p.append(dag.veckodag);
+
+  console.log(dag);
+  
+
+  if('helgdag' in dag) {
+    const helgdag = document.createElement('p');
+    helgdag.classList.add("helgdag")
+    helgdag.append(dag.helgdag)
+    div.append(helgdag)
+  }
 
   div.append(h5);
   h5.append(dag.datum.split("-")[2]);
@@ -87,7 +93,7 @@ function createDayCard(dag) {
 }
 
 function mouseEvents(myJson, monthIndex, year) {
-  let buttons = document.querySelectorAll("button");
+  let buttons = document.querySelectorAll(".cal-header button");
 
   (monthIndex = 11), (year = 2019);
 

@@ -108,10 +108,10 @@ main {
 div.active-item {
   position: relative;
 
-  background: #888;
+  background: #fefefe;
   border-radius: 0.5rem;
   padding: 1rem;
-  border: 0rem solid #a9abad;
+  border: 0rem solid #2ccd4d;
 
   display: flex;
   justify-content: center;
@@ -121,19 +121,30 @@ div.active-item {
   transition: 0.25s ease;
 }
 .grid-item:hover {
-  box-shadow:inset 0 0 1rem 0 #333;
+  border: .1rem solid #2ccd4d;
 }
 
 div.active-item {
-  background: #aa5555;
+  border: .1rem solid #2ccd4d;
+  box-shadow: inset .2rem .2rem #a9abada8;
 }
+
 .grid-item h5, div.active-item h5 {
+  position: absolute;
+  top: 15%;
   font-size: 3rem;
 }
 .grid-item p, div.active-item p {
   position: absolute;
   top: 0.2rem;
   text-align: center;
+}
+
+.grid-item .helgdag {
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  font-size: .7rem;
 }
 .grid-item ul, div.active-item ul {
   position: absolute;
