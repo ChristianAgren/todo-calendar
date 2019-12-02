@@ -1,16 +1,35 @@
-function defineTODOs() {
-    const   localStrList = JSON.parse(localStorage.getItem('todo-list')) || undefined,
-            DOMList = document.querySelector('.todo-list');
-
-    addTodosToDOM(localStrList, DOMList)
-    addSaveTodoButton()
-    addRemoveButtonsToDOM()
+function initTODOs() {
+//     const   localStrList = JSON.parse(localStorage.getItem(targetDate)) || undefined,
+//             DOMList = document.querySelector('.todo-list');
+    
+//     // addTodosToDOM(localStrList, DOMList)
+        addSaveTodoButton()
+//     // addRemoveButtonsToDOM()
 }
 
-function updateTodolistInDOM(localStrList){
+function addSaveTodoButton() {
+    const   input = document.querySelector('.add-todo input'),
+            saveButton = document.querySelector('.add-todo button');
+            
+    saveButton.addEventListener('click', () => {
+        const   todo = input.value;
+        const   targetDate = JSON.parse(localStorage.getItem('selectedDay')) || undefined;
+        const   localStrList = JSON.parse(localStorage.getItem(targetDate)) || [];
+        
+        if (todo != ""){
+            if((targetDate != undefined) && (targetDate != 'not available')) {
+                localStrList.unshift(todo)
+                localStorage.setItem(targetDate, JSON.stringify((localStrList)))
+                updateTodolistInDOM(targetDate)
+            }
+        }
+    })
+}
+
+function updateTodolistInDOM(targetDate){
     const   DOMList = document.querySelector('.todo-list');
     removeTodosFromDOM(DOMList)
-    addTodosToDOM(localStrList, DOMList)
+    addTodosToDOM(DOMList, targetDate)
 }
 
 function removeTodosFromDOM(DOMList){
@@ -21,47 +40,35 @@ function removeTodosFromDOM(DOMList){
     });
 }
 
-function addTodosToDOM(todos, DOMList) {
+function addTodosToDOM(DOMList, targetDate) {
 
-    if (todos != undefined) {
-        todos.forEach(todo => {         
-            const   li = document.createElement('li'),
-            removeElement = document.createElement('i');
+    const todoList = JSON.parse(localStorage.getItem(targetDate))    
     
+    if ((todoList != null) && (todoList != 'not available')) {
+        todoList.forEach(todo => {
+            const   li = document.createElement('li'),
+                    removeElement = document.createElement('i');
             li.append(todo)
             removeElement.append('clear')
             removeElement.className = 'material-icons delete-icon'
             li.appendChild(removeElement)
             DOMList.appendChild(li)
-        });
-    }          
-}
 
-function addSaveTodoButton() {
-    const   input = document.querySelector('.add-todo input'),
-            saveButton = document.querySelector('.add-todo button');
-            
-    saveButton.addEventListener('click', () => {
-        const   todo = input.value,
-                localStrList = JSON.parse(localStorage.getItem('todo-list')) || [];
-        if (todo != ""){
-            localStrList.unshift(todo)
-            localStorage.setItem('todo-list', JSON.stringify((localStrList)))
-            updateTodolistInDOM(localStrList)
-        }
-    })
-}
-
-function addRemoveButtonsToDOM() {
-    const target = document.querySelectorAll('.delete-icon');
-
-    target.forEach(icon => {
-        icon.addEventListener('click', (event) => {
-            console.log(event);
-            
-            // event.target.parentElement.parentElement.removeChild(event.target.parentElement)
         })
-           
-    });
-
+    }   
 }
+
+
+// function addRemoveButtonsToDOM() {
+//     const target = document.querySelectorAll('.delete-icon');
+
+//     target.forEach(icon => {
+//         icon.addEventListener('click', (event) => {
+//             console.log(event);
+            
+//             // event.target.parentElement.parentElement.removeChild(event.target.parentElement)
+//         })
+           
+//     });
+
+// }

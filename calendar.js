@@ -71,13 +71,20 @@ function clearCalendar() {
 function createDayCard(dag) {
   const div = document.createElement("div"),
     h5 = document.createElement("h5"),
-    p = document.createElement("p");
-  div.classList.add("grid-item");
-  div.append(p);
-  p.append(dag.veckodag);
+    p = document.createElement("p"),
+    ul = document.createElement('ul'),
+    activeDay = JSON.parse(localStorage.getItem('selectedDay')) || undefined;
 
-  console.log(dag);
+  div.classList.add("grid-item");
+  ul.classList.add("todos-for-day")
+  ul.id = dag.datum
+  div.append(p, ul);
+  p.append(dag.veckodag);
   
+  if (activeDay === dag.datum) {
+    div.classList.add("active-item")
+    updateTodolistInDOM(JSON.parse(localStorage.getItem('selectedDay')))
+  }
 
   if('helgdag' in dag) {
     const helgdag = document.createElement('p');
