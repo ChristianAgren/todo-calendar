@@ -29,6 +29,28 @@ h2 {
     text-align: center;
 }
 
+.date-selector {
+    margin: 1.5rem;
+    width: 80%;
+    height: 8rem;
+
+    background-color: rgba(255, 255, 255, 0.06);
+    border: .1rem dashed rgba(255, 255, 255, 0.2);
+
+    line-height: 1.6rem;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-selector > p {
+    padding: 0 1rem;
+
+    color: #fefefe60;
+}
+
 .add-todo {
     margin: 1rem;
 
@@ -69,6 +91,7 @@ h2 {
     position: relative;
     margin: .4rem;
     min-width: 70%;
+    max-width: 70%;
     padding: .4rem;
 
 }
