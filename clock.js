@@ -23,6 +23,7 @@ function defineClock() {
 function buildClock(day, month, hours, mins, year) {
     hours = (hours < 10) ? "0" + hours : hours;
     mins = (mins < 10) ? "0" + mins : mins;
+    month = (month < 10) ? "0" + month : month;
     day = (day < 10) ? "0" + day : day;
 
     const time = hours + ":" + mins  + "\n" + year + "-" + month + "-" + day;
