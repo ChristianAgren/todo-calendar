@@ -37,27 +37,33 @@ function removeTodosFromDOM(DOMList) {
 
 function addTodosToDOM(DOMList, targetDate) {
 
-    const todoList = JSON.parse(localStorage.getItem(targetDate))
+    const todoList = JSON.parse(localStorage.getItem(targetDate))    
+    
+    if (todoList != null) {
 
-    if ((todoList != null) && (todoList != 'not available')) {
         todoList.forEach(todo => {
-            const li = document.createElement('li'),
-                removeElement = document.createElement('i');
+            const   li = document.createElement('li'),
+                    removeElement = document.createElement('i'),
+                    editElement = document.createElement('i');
+          
             li.append(todo)
             removeElement.append('clear')
+            editElement.append('edit')
             removeElement.className = 'material-icons delete-icon'
+            editElement.className = 'material-icons edit-icon'
             li.appendChild(removeElement)
+            li.appendChild(editElement)
             DOMList.appendChild(li)
 
         })
     }
     addRemoveButtonsToDOM()
+    editTodo()
 }
 
 
 function addRemoveButtonsToDOM() {
     const target = document.querySelectorAll('.delete-icon');
-
     const targetDate = JSON.parse(localStorage.getItem('selectedDay'));
     const targetDateLocalArray = JSON.parse(localStorage.getItem(targetDate));
 
@@ -65,13 +71,25 @@ function addRemoveButtonsToDOM() {
         icon.addEventListener('click', (event) => {
 
             const Index = Array.prototype.indexOf.call(target, event.target)
-            console.log(Index);
             targetDateLocalArray.splice(Index, 1)
-            console.log(targetDateLocalArray)
             localStorage.setItem(targetDate, JSON.stringify(targetDateLocalArray))
             updateTodolistInDOM(targetDate)
         })
 
     });
+}
 
+function editTodo () {
+    
+    const target = document.querySelectorAll('.edit-icon')
+    const targetDate = JSON.parse(localStorage.getItem('selectedDay'))
+    const targetDateLocalArray = JSON.parse(localStorage.getItem(targetDate))
+    
+    
+    target.forEach(icon => {
+        icon.addEventListener('click', (event) => {
+            const Index = Array.prototype.indexOf.call(target, event.target)
+
+        } )
+    })
 }

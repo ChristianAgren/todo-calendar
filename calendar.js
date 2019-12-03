@@ -99,11 +99,13 @@ function createDayCard(dag) {
   ul.classList.add("todos-for-day")
   ul.id = dag.datum
   div.append(p, ul);
+  div.append(h5);
   p.append(dag.veckodag);
 
   if (activeDay === dag.datum) {
     div.classList.add("active-item")
     updateTodolistInDOM(JSON.parse(localStorage.getItem('selectedDay')))
+    toggleSidebarDateSelection(activeDay)
   }
 
   if ('helgdag' in dag) {
@@ -112,8 +114,6 @@ function createDayCard(dag) {
     helgdag.append(dag.helgdag)
     div.append(helgdag)
   }
-
-  div.append(h5);
   h5.append(dag.datum.split("-")[2]);
 
   document.querySelector(".cal-grid").append(div);

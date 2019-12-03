@@ -1,9 +1,12 @@
 
 /* GLOBAL */
 
-h2 {
+.sidebar-heading h2 {
     font-size: 4rem;
+    line-height: 115%;
 }
+
+
 
 /* SIDEBAR */
 
@@ -16,6 +19,10 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 0.2rem solid grey;
+    border-right: 0.2rem solid grey;
+    border-left: 0.2rem solid grey;
+
 }
 
 /* SIDEBAR ITEMS */
@@ -32,20 +39,35 @@ h2 {
 .date-selector {
     margin: 1.5rem;
     width: 80%;
-    height: 8rem;
+    min-height: 8rem;
 
-    background-color: rgba(255, 255, 255, 0.06);
-    border: .1rem dashed rgba(255, 255, 255, 0.2);
-
+    
     line-height: 1.6rem;
     text-align: center;
-
-    display: flex;
+    
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.selected-date {
+    display: none;
+    border: none;
+}
+
+.unselected {
+    display: flex;
+    border: .1rem dashed rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.date-selector h1 {
+    margin: 1rem 1rem;
+    line-height: 2rem;
+}
+
 .date-selector > p {
+    margin-bottom: 1rem;
     padding: 0 1rem;
 
     color: #fefefe60;
@@ -122,13 +144,26 @@ h2 {
     border-radius: 50%;
     cursor: pointer;
 }
+.edit-icon {
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
 
 /* CLOCK */
 
 .clock {
     position: absolute;
-    top: 1.2rem;
     width: 100%;
     font-size: 1.5rem;
     text-align: center;
+    border: 0.1rem outset grey;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-left: none;
 }
