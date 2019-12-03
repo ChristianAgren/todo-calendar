@@ -116,11 +116,6 @@ div.active-item {
   transition: 0.25s ease;
 }
 
-
-.grid-item:hover {
-  border: .1rem solid #2ccd4d;
-}
-
 div.active-item {
   border: .1rem solid #2ccd4d;
   box-shadow: inset .2rem .2rem #a9abada8;

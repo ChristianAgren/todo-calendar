@@ -1,4 +1,3 @@
-
 /* GLOBAL */
 
 .sidebar-heading h2 {
@@ -18,35 +17,39 @@
     background: #2c3235;
     color: #fefefe;
     padding: .2rem;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+    
+    display: grid;
+    grid-template-columns: 100%;
+    justify-items: center;
+    align-content: center;
+    
+}
+.sidebar-top {
+    width: 100%;
+    
+}
+.sidebar-top * {
+    border: 1px solid red;
 }
 
 /* SIDEBAR ITEMS */
 
 .sidebar-heading {
     margin-top: 3rem;
-
+    
     width: 100%;
-    padding: 1rem;
-
     text-align: center;
 }
 
 .date-selector {
-    margin: 1.5rem;
-    width: 80%;
+    /* margin: 1.5rem; */
     min-height: 8rem;
 
-    
     line-height: 1.6rem;
     text-align: center;
-    
+
+    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -55,11 +58,11 @@
     border: none;
 }
 
-.unselected {
+/* .unselected {
     display: flex;
     border: .1rem dashed rgba(255, 255, 255, 0.2);
     background-color: rgba(255, 255, 255, 0.06);
-}
+} */
 
 .date-selector h1 {
     margin: 1rem 1rem;
@@ -74,8 +77,6 @@
 }
 
 .add-todo {
-    margin: 1rem;
-
     width: 100%;
     display: flex;
     justify-content: center;
@@ -120,7 +121,6 @@
     min-width: 70%;
     max-width: 70%;
     padding: .4rem;
-
 }
 
 .todo-list li, .add-todo input {
@@ -137,6 +137,7 @@
     color: #fefefe;
     padding: .2rem;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .delete-icon {
@@ -147,7 +148,6 @@
 
     background: radial-gradient(red 40%, rgb(168, 0, 0)) ;
     border-radius: 50%;
-    cursor: pointer;
 }
 .edit-icon {
     position: absolute;
@@ -155,7 +155,6 @@
     top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
-    cursor: pointer;
 }
 
 
@@ -163,28 +162,21 @@
 /* CLOCK */
 
 .clock {
-    position: absolute;
-    width: 100%;
     font-size: 1.5rem;
     text-align: center;
-    border: 0.1rem outset grey;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    border-left: none;
+
+    border-bottom: 0.1rem solid #666;
+    padding: .4rem 0;
 }
 
 /* TOGGLE CALENDAR*/
 
 .cal-toggle {
-    /* position: absolute; */
     cursor: pointer;
-
-
-    padding: .5rem;
-
-    background: none;
+    
     border: none;
+    
+    background: #2c3235;
+    color: #fefefe;
 
-    color: #fefefe
-    ;
 }
