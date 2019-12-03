@@ -32,20 +32,35 @@ h2 {
 .date-selector {
     margin: 1.5rem;
     width: 80%;
-    height: 8rem;
+    min-height: 8rem;
 
-    background-color: rgba(255, 255, 255, 0.06);
-    border: .1rem dashed rgba(255, 255, 255, 0.2);
-
+    
     line-height: 1.6rem;
     text-align: center;
-
-    display: flex;
+    
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.selected-date {
+    display: none;
+    border: none;
+}
+
+.unselected {
+    display: flex;
+    border: .1rem dashed rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.date-selector h1 {
+    margin: 1rem 1rem;
+    line-height: 2rem;
+}
+
 .date-selector > p {
+    margin-bottom: 1rem;
     padding: 0 1rem;
 
     color: #fefefe60;

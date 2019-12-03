@@ -38,12 +38,14 @@ function removeTodosFromDOM(DOMList){
 
 function addTodosToDOM(DOMList, targetDate) {
 
-    const todoList = JSON.parse(localStorage.getItem(targetDate))
+    const todoList = JSON.parse(localStorage.getItem(targetDate))    
+    
+    if (todoList != null) {
 
-    if ((todoList != null) && (todoList != 'not available')) {
         todoList.forEach(todo => {
             const   li = document.createElement('li'),
                     removeElement = document.createElement('i');
+
             li.append(todo)
             removeElement.append('clear')
             removeElement.className = 'material-icons delete-icon'
