@@ -1,12 +1,31 @@
 async function logData() {
-  let year = 2019,
-    monthIndex = 11,
-    response = await fetch(`https://api.dryg.net/dagar/v2.1/${year}`);
+
+  let
+    dateObj = new Date(),
+    year = dateObj.getFullYear(),
+    monthIndex = dateObj.getMonth(),
+    response = await fetch(`https://api.dryg.net/dagar/v2.1/${year}`),
+    today;
 
   const myJson = await response.json();
 
+  defineToday(dateObj, today);
   updateMonth(myJson, monthIndex, year);
   mouseEvents(myJson, monthIndex, year);
+
+}
+
+function defineToday(dateObj, today) {
+  let
+  day = dateObj.getDate(),
+  month = dateObj.getMonth() + 1,
+  year = dateObj.getFullYear();
+  
+  month = (month < 10) ? "0" + month : month;
+  day = (day < 10) ? "0" + day : day;
+  
+  today = year + "-" + month + "-" + day;
+  localStorage.setItem('selectedDay', JSON.stringify(today))
 }
 
 function buildCalendar(myJson, months, monthIndex) {
@@ -14,8 +33,8 @@ function buildCalendar(myJson, months, monthIndex) {
     if (
       dag.datum.split("-")[1] ===
       months.number[monthIndex % months.number.length]
-    ) {      
-      createDayCard(dag);      
+    ) {
+      createDayCard(dag);
     }
   });
   toggleSelectedGridItem();
@@ -74,19 +93,20 @@ function createDayCard(dag) {
     p = document.createElement("p"),
     ul = document.createElement('ul'),
     activeDay = JSON.parse(localStorage.getItem('selectedDay')) || undefined;
+    
 
   div.classList.add("grid-item");
   ul.classList.add("todos-for-day")
   ul.id = dag.datum
   div.append(p, ul);
   p.append(dag.veckodag);
-  
+
   if (activeDay === dag.datum) {
     div.classList.add("active-item")
     updateTodolistInDOM(JSON.parse(localStorage.getItem('selectedDay')))
   }
 
-  if('helgdag' in dag) {
+  if ('helgdag' in dag) {
     const helgdag = document.createElement('p');
     helgdag.classList.add("helgdag")
     helgdag.append(dag.helgdag)
@@ -105,7 +125,7 @@ function mouseEvents(myJson, monthIndex, year) {
   (monthIndex = 11), (year = 2019);
 
   buttons.forEach(button => {
-    button.addEventListener("click", function(event) {
+    button.addEventListener("click", function (event) {
       clearCalendar();
 
       if (event.target.id === "left") {
