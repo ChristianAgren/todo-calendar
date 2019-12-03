@@ -4,4 +4,13 @@ div.calendar {
 
 main {
     grid-template-columns: 25% auto;
+    grid-template-rows: auto;
+}
+
+.cal-toggle {
+    display: none;
+}
+.todo-list {
+    height: 1rem;
+    overflow: initial;
 }

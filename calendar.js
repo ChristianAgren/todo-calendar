@@ -8,10 +8,10 @@ async function logData() {
     today;
 
   const myJson = await response.json();
+  mouseEvents(myJson, monthIndex, year);
 
   defineToday(dateObj, today);
   updateMonth(myJson, monthIndex, year);
-  mouseEvents(myJson, monthIndex, year);
 
 }
 
@@ -120,7 +120,8 @@ function createDayCard(dag) {
 }
 
 function mouseEvents(myJson, monthIndex, year) {
-  let buttons = document.querySelectorAll(".cal-header button");
+  let buttons = document.querySelectorAll(".cal-header button"),
+    toggleCalButton = document.querySelector(".cal-toggle");
 
   (monthIndex = 11), (year = 2019);
 
@@ -147,4 +148,8 @@ function mouseEvents(myJson, monthIndex, year) {
       }
     });
   });
+  toggleCalButton.addEventListener("click", function () {
+    console.log("SAEF");
+    $(".calendar").toggle(0)
+  })
 }
