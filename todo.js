@@ -2,24 +2,23 @@
  * Initialises Todo on load
  */
 function initTODOs() {
-        addSaveTodoButton()
-
+    addSaveTodoButton()
 }
 
 /**
  * Loads eventlistener on save button for todos and saves input value to localstorage
  */
 function addSaveTodoButton() {
-    const   input = document.querySelector('.add-todo input'),
-            saveButton = document.querySelector('.add-todo button');
+    const input = document.querySelector('.add-todo input'),
+        saveButton = document.querySelector('.add-todo button');
 
     saveButton.addEventListener('click', () => {
-        const   todo = input.value;
-        const   targetDate = JSON.parse(localStorage.getItem('selectedDay')) || undefined;
-        const   localStrList = JSON.parse(localStorage.getItem(targetDate)) || [];
+        const todo = input.value;
+        const targetDate = JSON.parse(localStorage.getItem('selectedDay')) || undefined;
+        const localStrList = JSON.parse(localStorage.getItem(targetDate)) || [];
 
-        if (todo != ""){
-            if((targetDate != undefined) && (targetDate != 'not available')) {
+        if (todo != "") {
+            if ((targetDate != undefined) && (targetDate != 'not available')) {
                 localStrList.unshift(todo)
                 localStorage.setItem(targetDate, JSON.stringify((localStrList)))
                 updateTodolistInDOM(targetDate)
@@ -104,7 +103,6 @@ function buildEditButton(todo) {
     editElement.className = 'material-icons edit-icon'
     todo.appendChild(editElement)
     editElement.addEventListener('click', editTodoInLocalstorage)
-
 }
 
 function editTodoInLocalstorage(event) {
@@ -114,7 +112,6 @@ function editTodoInLocalstorage(event) {
             Index = Array.prototype.indexOf.call(target, event.target.parentElement),
             todoTextValue = targetDateLocalArray[Index],
             targetTodoListItem = event.target.parentElement;    
-            
 
     removeTextFromTargetListItem(targetTodoListItem)
     addSaveNewInputButton(targetTodoListItem, Index)
