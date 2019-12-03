@@ -1,9 +1,12 @@
 
 /* GLOBAL */
 
-h2 {
+.sidebar-heading h2 {
     font-size: 4rem;
+    line-height: 115%;
 }
+
+
 
 /* SIDEBAR */
 
@@ -16,6 +19,10 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 0.2rem solid grey;
+    border-right: 0.2rem solid grey;
+    border-left: 0.2rem solid grey;
+
 }
 
 /* SIDEBAR ITEMS */
@@ -142,8 +149,11 @@ h2 {
 
 .clock {
     position: absolute;
-    top: 1.2rem;
     width: 100%;
     font-size: 1.5rem;
     text-align: center;
+    border: 0.1rem outset grey;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-left: none;
 }
