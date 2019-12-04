@@ -1,126 +1,171 @@
-
 /* GLOBAL */
 
 .sidebar-heading h2 {
-    font-size: 4rem;
-    line-height: 115%;
+  font-size: 4rem;
+  line-height: 115%;
 }
-
-
 
 /* SIDEBAR */
 
 .sidebar {
-    position: relative;
-    background: #2c3235;
+  position: relative;
+  height: 100vh;
 
-    color: #fefefe;
+  background: #2c3235;
+  color: #fefefe;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-bottom: 0.2rem solid grey;
-    border-right: 0.2rem solid grey;
-    border-left: 0.2rem solid grey;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* SIDEBAR ITEMS */
 
 .sidebar-heading {
-    margin-top: 3rem;
+  width: 100%;
+  text-align: center;
+}
 
-    width: 100%;
-    padding: 1rem;
+/* TOGGLE CALENDAR*/
 
-    text-align: center;
+.cal-toggle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+
+  padding: 0.5rem;
+
+  border: none;
+  background: #f55;
+  color: #fefefe;
+  cursor: pointer;
 }
 
 .date-selector {
-    margin: 1.5rem;
-    width: 80%;
-    min-height: 8rem;
+  text-align: center;
+  margin-bottom: 1rem;
 
-    
-    line-height: 1.6rem;
-    text-align: center;
-    
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
-.selected-date {
-    display: none;
-    border: none;
-}
-
-.unselected {
-    display: flex;
-    border: .1rem dashed rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.06);
+.date-selector > * {
+  /* margin: 1rem; */
 }
 
 .date-selector h1 {
-    margin: 1rem 1rem;
-    line-height: 2rem;
+  font-size: 1.5rem;
+}
+.date-selector h2 {
+  font-size: 1.2rem;
+}
+.date-selector h3 {
+  font-size: 3rem;
 }
 
-.date-selector > p {
-    margin-bottom: 1rem;
-    padding: 0 1rem;
+.date-selector p {
+  color: #fefefe60;
+}
 
-    color: #fefefe60;
+.selected-date {
+  display: none;
+  border: none;
+}
+
+.unselected {
+  display: flex;
+  border: 0.1rem dashed rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.06);
 }
 
 .add-todo {
-    margin: 1rem;
+  width: 100%;
 
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: center;
 }
 
 .add-todo input {
-    width: 60%;
-    padding: .6rem;
-    border: none;
+  width: 60%;
+
+  padding: 0.6rem;
+
+  border: none;
 }
 
 .add-todo button {
-    margin-left: .4rem;
+  margin-left: 0.4rem;
 
-    padding: 0 1rem;
-    border: none;
-    background: linear-gradient(#2ccd4d, rgb(0, 105, 0));
-    color: #8fffa5;
-    cursor: pointer;
+  padding: 0 1rem;
+  border: none;
+  background: linear-gradient(#2ccd4d, rgb(0, 105, 0));
+  color: #8fffa5;
+  cursor: pointer;
 }
 
 .add-todo button > i {
-    text-shadow: #004E00 0 0 4px;
+  text-shadow: #004e00 0 0 4px;
 }
 
 .todo-list {
-    list-style: none;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 90%;
+
+  margin-bottom: 2rem;
+  overflow-y: scroll;
+
+  list-style: none;
+  border-bottom: 1px solid #fefefe;
+  border-top: 1px solid #fefefe;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.todo-list::-webkit-scrollbar {
+  display: none;
+}
+
 
 .todo-list li {
-    position: relative;
-    margin: .4rem;
-    min-width: 70%;
-    max-width: 70%;
-    padding: .4rem;
-
+  position: relative;
+  margin: 0.4rem;
+  width: 70%;
+  padding: 0.4rem;
 }
 
-.todo-list li, .add-todo input {
-    color: #252a2e;
-    background-color: #fefefe;
+.todo-list li,
+.add-todo input {
+  color: #252a2e;
+  background-color: #fefefe;
+}
+
+.todo-list li,
+.add-todo input,
+.add-todo button {
+  border-radius: 0.5rem;
+  box-shadow: #131618 3px 3px 3px;
+}
+
+.todo-list .material-icons {
+  color: #fefefe;
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.delete-icon {
+  position: absolute;
+  left: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: radial-gradient(red 40%, rgb(168, 0, 0));
+  border-radius: 50%;
 }
 
 .edit-field {
@@ -159,6 +204,12 @@
     background: radial-gradient(red 40%, rgb(168, 0, 0)) ;
 }
 .edit-icon {
+
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
     right: -2rem;
     
     color: #fefefe;
@@ -168,20 +219,16 @@
     
     color: #fefefe;
     background: radial-gradient(#2ccd4d 40%, rgb(0, 105, 0)) ;
-    text-shadow: #004E00 0 0 4px;
-}
-
-
+    text-shadow: #004E00 0 0 4px;}
 
 /* CLOCK */
 
 .clock {
-    position: absolute;
-    width: 100%;
-    font-size: 1.5rem;
-    text-align: center;
-    border: 0.1rem outset grey;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    border-left: none;
+  width: 100%;
+  font-size: 1rem;
+  text-align: right;
+
+  /* border-bottom: 0.1rem solid #666; */
+  padding: 0 0.5rem;
 }
+ 

@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="desktop.css" media="screen and (min-width: 56rem)">
     <link rel="stylesheet" href="sidebar.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
+    <link rel="stylesheet" href="calendar.css">
+
+    <link rel="stylesheet" href="desktop.css" media="screen and (min-width: 56rem)">
+    <link rel="stylesheet" href="hover.css" media="screen and (min-width: 56rem)">
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700|Oxygen:300,400,700&display=swap"
         rel="stylesheet">
 
@@ -27,27 +31,30 @@
 <body>
     <main>
         <div class="sidebar">
+
             <div class="clock"></div>
-            <div class="sidebar-heading">
-                <h2>Mina Todo's</h2>
-            </div>
             <div class="date-selector selected-date">
-                    <h3>This is a date</h3>
-                    <h1>This is a day of the week</h1>
-                    <p>This is if it's a holiday</p>
+                <h2>Mina Todo's</h2>
+                <h1></h1>
+                <h3></h3>
+                <p></p>
             </div>
             <div class="date-selector unselected">
-                <h1>Alla todos:</h1>
+                <h2>Alla todos:</h2>
                 <p>För att spara en todo till ett specifikt datum, välj ett datum i kalendern.</p>
             </div>
             <div class="add-todo">
                 <input type="text" maxlength="60" placeholder="Lägg till todo...">
                 <button><i class="material-icons">add</i></button>
             </div>
+
+
             <ul class="todo-list">
             </ul>
+
         </div>
 
+        <button class="cal-toggle"><i class="material-icons">calendar_today</i></button>
 
         <div class="calendar">
             <div class="cal-header">
@@ -60,10 +67,8 @@
             </div>
 
             <div class="cal-grid">
-
-
-
             </div>
+
         </div>
     </main>
 

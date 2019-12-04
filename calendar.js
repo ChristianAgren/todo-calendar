@@ -5,11 +5,14 @@ async function logData() {
     year = dateObj.getFullYear(),
     monthIndex = dateObj.getMonth(),
     response = await fetch(`https://api.dryg.net/dagar/v2.1/${year}`),
-    myJson = await response.json();
+    today;
+
+  const myJson = await response.json();
+  
+  mouseEvents(myJson, monthIndex, year);
 
   defineToday(myJson, dateObj);
   updateMonth(myJson, monthIndex, year);
-  mouseEvents(myJson, monthIndex, year);
 
 }
 
@@ -136,7 +139,8 @@ function createDayCard(dag) {
 }
 
 function mouseEvents(myJson, monthIndex, year) {
-  let buttons = document.querySelectorAll(".cal-header button");
+  let buttons = document.querySelectorAll(".cal-header button"),
+    toggleCalButton = document.querySelector(".cal-toggle");
 
   (monthIndex = 11), (year = 2019);
 
@@ -163,4 +167,8 @@ function mouseEvents(myJson, monthIndex, year) {
       }
     });
   });
+  toggleCalButton.addEventListener("click", function () {
+    console.log("SAEF");
+    $(".calendar").toggle(0)
+  })
 }
