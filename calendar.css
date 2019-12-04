@@ -1,8 +1,14 @@
 /*### calendar ###*/
 
 .calendar {
+  position: absolute;
+  top:60%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
   display: grid;
-  grid-template-rows: 5% 90%;
+  grid-template-rows: 10% 85%;
   background: #edf0f1;
 }
 
@@ -10,6 +16,8 @@
   background: #5c75a3;
   background: linear-gradient(to bottom, #5c75a3, #384763);
   color: #fefefe;
+
+  padding: .5rem;
 
   display: flex;
   justify-content: center;
@@ -33,13 +41,11 @@
   /* border: 1px solid red; */
 }
 .year-month h5 {
-  width: 20%;
   text-align: right;
   font-size: 1rem;
   padding-right: .5rem;
 }
 .year-month h2 {
-  width: 50%;
   text-align: left;
   font-size: 1.5rem;
 }
