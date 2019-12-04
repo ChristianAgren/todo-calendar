@@ -167,13 +167,59 @@
   background: radial-gradient(red 40%, rgb(168, 0, 0));
   border-radius: 50%;
 }
+
+.edit-field {
+    border: none;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.edit {
+    border: #2ccd4d dashed 1px;
+}
+
+.todo-list li, .add-todo input, .add-todo button {
+    border-radius: .5rem;
+    box-shadow: #131618 3px 3px 3px;
+}
+
+.todo-list .material-icons {
+    padding: .2rem;
+    font-size: 1.2rem;
+}
+
+.todo-list> li > i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.delete-icon {
+    left: -2rem;
+    
+    color: #fefefe;
+    background: radial-gradient(red 40%, rgb(168, 0, 0)) ;
+}
 .edit-icon {
+
   position: absolute;
   right: -2rem;
   top: 50%;
   transform: translateY(-50%);
   border-radius: 50%;
+    right: -2rem;
+    
+    color: #fefefe;
 }
+.save-edit-icon {
+    right: -2rem;
+    
+    color: #fefefe;
+    background: radial-gradient(#2ccd4d 40%, rgb(0, 105, 0)) ;
+    text-shadow: #004E00 0 0 4px;}
 
 /* CLOCK */
 

@@ -1,6 +1,6 @@
 async function logData() {
 
-  let
+  const
     dateObj = new Date(),
     year = dateObj.getFullYear(),
     monthIndex = dateObj.getMonth(),
@@ -8,24 +8,43 @@ async function logData() {
     today;
 
   const myJson = await response.json();
+  
   mouseEvents(myJson, monthIndex, year);
 
-  defineToday(dateObj, today);
+  defineToday(myJson, dateObj);
   updateMonth(myJson, monthIndex, year);
 
 }
 
-function defineToday(dateObj, today) {
+function defineToday(myJson, dateObj) {
   let
   day = dateObj.getDate(),
   month = dateObj.getMonth() + 1,
-  year = dateObj.getFullYear();
+  year = dateObj.getFullYear(),
+  today;
   
   month = (month < 10) ? "0" + month : month;
   day = (day < 10) ? "0" + day : day;
   
   today = year + "-" + month + "-" + day;
+
+  const indexOfCurrentDay = findIndexOfCurrentDay(myJson, today),
+        currentDayInfo = myJson.dagar[indexOfCurrentDay],
+        dayOfWeek = currentDayInfo.veckodag,
+        helgdag = currentDayInfo.helgdag || 'Inte en helgdag!',
+        dayInfoToLocalstorage = [dayOfWeek, helgdag];
+  
   localStorage.setItem('selectedDay', JSON.stringify(today))
+  localStorage.setItem('dayOfTheWeek', JSON.stringify(dayInfoToLocalstorage ))
+}
+
+function findIndexOfCurrentDay(myJson, today) {
+  
+  for (i = 0; i < myJson.dagar.length; i++) {
+    if (myJson.dagar[i].datum === today){
+      return i  
+    }
+  }
 }
 
 function buildCalendar(myJson, months, monthIndex) {
