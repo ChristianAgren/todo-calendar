@@ -130,7 +130,7 @@
 }
 
 .edit {
-    border: red dashed 1px;
+    border: #2ccd4d dashed 1px;
 }
 
 .todo-list li, .add-todo input, .add-todo button {
@@ -139,37 +139,36 @@
 }
 
 .todo-list .material-icons {
-    color: #fefefe;
     padding: .2rem;
     font-size: 1.2rem;
 }
 
-.delete-icon {
+.todo-list> li > i {
     position: absolute;
-    left: -2rem;
     top: 50%;
     transform: translateY(-50%);
-
-    background: radial-gradient(red 40%, rgb(168, 0, 0)) ;
+    
     border-radius: 50%;
     cursor: pointer;
+}
+
+.delete-icon {
+    left: -2rem;
+    
+    color: #fefefe;
+    background: radial-gradient(red 40%, rgb(168, 0, 0)) ;
 }
 .edit-icon {
-    position: absolute;
     right: -2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    cursor: pointer;
+    
+    color: #fefefe;
 }
 .save-edit-icon {
-    position: absolute;
     right: -2rem;
-    top: 50%;
-    transform: translateY(-50%);
-
-    border-radius: 50%;
-    cursor: pointer;
+    
+    color: #fefefe;
+    background: radial-gradient(#2ccd4d 40%, rgb(0, 105, 0)) ;
+    text-shadow: #004E00 0 0 4px;
 }
 
 
