@@ -4,8 +4,7 @@ async function logData() {
     dateObj = new Date(),
     year = dateObj.getFullYear(),
     monthIndex = dateObj.getMonth(),
-    response = await fetch(`https://api.dryg.net/dagar/v2.1/${year}`),
-    today;
+    response = await fetch(`https://api.dryg.net/dagar/v2.1/${year}`);
 
   const myJson = await response.json();
   
