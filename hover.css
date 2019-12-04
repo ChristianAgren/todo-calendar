@@ -1,3 +1,9 @@
 .grid-item:hover {
-    border: .1rem solid #2ccd4d;
-  }
+  box-shadow: inset .3rem .3rem 0 0 #2ccd4d88;
+  text-shadow: .3rem .3rem #0002;
+}
+
+.active-item:hover {
+  box-shadow: inset .7rem .7rem 0 0 #2ccd4d;
+  text-shadow: .3rem .3rem #0002;
+}

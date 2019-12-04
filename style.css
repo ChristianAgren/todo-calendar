@@ -9,144 +9,33 @@
 /*
     font-family: 'Oxygen', sans-serif;
     font-family: 'Nunito Sans', sans-serif;
-*/
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  height: 100vh;
-  /* font-size: 100%; */
-  font-family: "Oxygen", sans-serif;
+    */
+    
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      height: 100vh;
+      /* font-size: 100%; */
+      font-family: 'Nunito Sans', sans-serif;
+      font-family: 'Courier New', Courier, monospace;
+      
+      font-family: "Oxygen", sans-serif;
 }
 body {
-  background: #ff5252;
+  background: #2c3235;
 }
 main {
   width: 100%;
   height: 100vh;
+  
+  background: #2c3235;
+  
   display: grid;
-
-  background: #edf0f1;
-
   grid-template-columns: 1fr;
-}
-
-
-.cal-header {
-  background: #5c75a3;
-  color: #fefefe;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.year-month {
-  position: relative;
-  width: 40%;
-  margin-top: 0.5rem;
-
-  text-align: center;
-}
-.year-month h2 {
-  font-size: 2rem;
-}
-.year-month h5 {
-  position: absolute;
-  top: 0;
-  left: 50%;
-
-  margin-top: -0.7rem;
-  font-size: 1rem;
-
-  transform: translateX(-50%);
-}
-
-#left,
-#right {
-  cursor: pointer;
-
-  border: none;
-  background: #fff0;
-  color: #fefefe;
-
-  padding: 0.5rem;
-  margin: 0 5vw;
-}
-
-/*### calendar ###*/
-
-.calendar {
-
-  /* display: none; */
-  grid-template-rows: 4rem auto;
-}
-
-.cal-grid {
-  margin: 0.5rem;
-
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  /* gap: 0.2rem; */
-}
-
-/* GRID-ITEMS (VECKODAGAR) */
-
-.grid-item,
-div.active-item {
-  position: relative;
-
-
-  background: #fefefe;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  border: 0rem solid #2ccd4d;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  cursor: pointer;
-  transition: 0.25s ease;
-}
-
-div.active-item {
-  border: .1rem solid #2ccd4d;
-  box-shadow: inset .2rem .2rem #a9abada8;
-}
-
-.grid-item h5, div.active-item h5 {
-  position: absolute;
-  top: 15%;
-  font-size: 3rem;
-}
-.grid-item p, div.active-item p {
-  position: absolute;
-  top: 0.2rem;
-  text-align: center;
-}
-
-.grid-item .helgdag {
-  position: absolute;
-  top: 60%;
-  width: 100%;
-  font-size: .7rem;
-}
-.grid-item ul, div.active-item ul {
-  position: absolute;
-  bottom: 0;
-
-  padding: 0.2rem;
-  list-style: none;
-
-  display: flex;
-}
-.grid-item ul li::before, div.active-item ul li::before {
-  content: "\25cf";
 }
