@@ -3,12 +3,7 @@ function toggleSelectedGridItem() {
 
   dayCardArray.forEach(card => {
     card.addEventListener('click', (e) => {
-      const targetDate = e.currentTarget.children[1].id,
-            targetDayOfTheWeek = e.currentTarget.firstChild.innerText;
-      let   targetDayIsHoliday = e.currentTarget.children[3] || false;
-            
-      targetDayIsHoliday = (targetDayIsHoliday != false) ? targetDayIsHoliday.innerText : "Inte en helgdag!"
-            
+      const targetDate = e.currentTarget.children[1].id;            
             
       dayCardArray.forEach(card => {
         if (!(targetDate === JSON.parse(localStorage.getItem('selectedDay')))){
@@ -24,7 +19,6 @@ function toggleSelectedGridItem() {
       else {
         card.classList.add('active-item')
         localStorage.setItem('selectedDay', JSON.stringify(targetDate))
-        localStorage.setItem('dayOfTheWeek', JSON.stringify([targetDayOfTheWeek, targetDayIsHoliday]))
         toggleSidebarDateSelection(targetDate)
         updateTodolistInDOM(targetDate)
       }
@@ -51,17 +45,23 @@ function buildSidebarDate(targetDate) {
   const selectedDateTitle = document.querySelector('.selected-date h3'),
         selectedDayOfTheWeek = document.querySelector('.selected-date h1'),
         selectedDateHoliday = document.querySelector('.selected-date p'),
-        selectedDateInfoArray = JSON.parse(localStorage.getItem('dayOfTheWeek'));
-
-    if (targetDate) {
-      selectedDateTitle.innerText = targetDate
-      selectedDayOfTheWeek.innerText = selectedDateInfoArray[0]
-      selectedDateHoliday.innerText = selectedDateInfoArray[1]
-      if (selectedDateInfoArray[1] != 'Inte en helgdag!') {
+        selectedDateInfoArray = JSON.parse(localStorage.getItem('apiMonth'));
+        
+  selectedDateInfoArray.forEach(dag => {
+    if (dag.datum === targetDate) {
+      let helgdagText;
+      
+      selectedDateTitle.innerText = dag.datum
+      selectedDayOfTheWeek.innerText = dag.veckodag
+      helgdagText = (dag.helgdag === undefined) ? 'Inte en helgdag!' : dag.helgdag
+      selectedDateHoliday.innerText = helgdagText
+      if (helgdagText != 'Inte en helgdag!') {
         selectedDateHoliday.style.color = '#fefefe'
       }
       else {
         selectedDateHoliday.style.color = '#fefefe60'
       }
-    }
+    }   
+  });
+
 }

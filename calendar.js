@@ -20,8 +20,9 @@ async function defineAPI() {
           
   const response = await fetch(`https://api.dryg.net/dagar/v2.1/${year}/${month+1}`),
         myJson = await response.json();
-          
-  defineToday(myJson, today)
+
+  localStorage.setItem('apiMonth', JSON.stringify(myJson.dagar))
+  localStorage.setItem('selectedDay', JSON.stringify(today))
 
   return myJson.dagar
 }
@@ -70,26 +71,30 @@ function clearCalendarMonth() {
 }
 
 function buildCalendarMonth(month) {
+  
+  month.forEach(day => {
+    const todos = JSON.parse(localStorage.getItem(day.datum)) || false;
+
+    if (todos) {
+      todos.forEach(todo => {
+        console.log(todo);
+        
+      });
+    }
+  });
+
+
+  const dayInWeek = month[0]['dag i vecka'];
+
+  for(i = 0; i < dayInWeek; i++) {
+    // console.log('hej');
+    
+  }
   month.forEach(day => {
     createDayCard(day)
   });
   toggleSelectedGridItem();
   updateMonthInDOM();
-}
-
-function defineToday(myJson, today) {
-  const checkLocalstorage = JSON.parse(localStorage.getItem('dayOfTheWeek')) || false
-
-  if (!checkLocalstorage) {
-    localStorage.setItem('selectedDay', JSON.stringify(today))
-    const indexOfCurrentDay = findIndexOfCurrentDay(myJson, today),
-          currentDayInfo = myJson.dagar[indexOfCurrentDay],
-          dayOfWeek = currentDayInfo.veckodag,
-          helgdag = currentDayInfo.helgdag || 'Inte en helgdag!',
-          dayInfoToLocalstorage = [dayOfWeek, helgdag];
-    localStorage.setItem('dayOfTheWeek', JSON.stringify(dayInfoToLocalstorage ))  
-          
-  }
 }
 
 function findIndexOfCurrentDay(myJson, today) {
@@ -141,6 +146,10 @@ function updateMonthInDOM() {
   document.querySelector(".month").innerHTML =
     months.name[calendarStatus[1] % months.name.length];
   document.querySelector(".year").innerHTML = calendarStatus[0];
+}
+
+function test() {
+
 }
 
 function createDayCard(dag) {
