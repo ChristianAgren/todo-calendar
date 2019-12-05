@@ -22,6 +22,7 @@ function addSaveTodoButton() {
                 localStrList.unshift(todo)
                 localStorage.setItem(targetDate, JSON.stringify((localStrList)))
                 updateTodolistInDOM(targetDate)
+                updateMonth()
             }
         }
     })
@@ -94,6 +95,7 @@ function removeTodoFromLocalstorage(event) {
 
 function removeTodoFromDOM(event) {
     event.target.parentElement.parentElement.removeChild(event.target.parentElement)
+    updateMonth()
 }
 
 function buildEditButton(todo) {
