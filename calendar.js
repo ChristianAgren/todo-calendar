@@ -1,7 +1,7 @@
 async function updateMonth() {
   const currentCalendarMonth = await defineAPI();
   clearCalendarMonth();
-  buildCalendarMonth(currentCalendarMonth);
+  buildCalendarMonth(currentCalendarMonth);  
 }
 
 async function defineAPI() {
@@ -9,21 +9,22 @@ async function defineAPI() {
   const date = new Date(),
         calendarActive = JSON.parse(localStorage.getItem('calendarstatus')) || false,
         year = (calendarActive) ? calendarActive[0] : date.getFullYear(),
-        month = (calendarActive) ? calendarActive[1] : date.getMonth();
+        month = (calendarActive) ? calendarActive[1] : date.getMonth(),
+        firstTime = JSON.parse(localStorage.getItem('selectedDay')) || false;
 
         let   day = date.getDate();
               day = (day < 10) ? "0" + day : day
         
   const today = `${date.getFullYear()}-${date.getMonth()+1}-${day}`;
           
-  localStorage.setItem('calendarstatus', JSON.stringify([year, month]))
-          
   const response = await fetch(`https://api.dryg.net/dagar/v2.1/${year}/${month+1}`),
-        myJson = await response.json();
-
+  myJson = await response.json();
+  
+  localStorage.setItem('calendarstatus', JSON.stringify([year, month]))
   localStorage.setItem('apiMonth', JSON.stringify(myJson.dagar))
-  localStorage.setItem('selectedDay', JSON.stringify(today))
-
+  if (!firstTime) {
+    localStorage.setItem('selectedDay', JSON.stringify(today))
+  }
   return myJson.dagar
 }
 
@@ -69,7 +70,7 @@ function addStaticEventListeners() {
 }
 
 function clearCalendarMonth() {
-  let clearArr = document.querySelectorAll(".grid-item");
+  let clearArr = document.querySelectorAll(".cal-grid > div");
 
   clearArr.forEach(day => {
     day.parentNode.removeChild(day);
@@ -77,27 +78,15 @@ function clearCalendarMonth() {
 }
 
 function buildCalendarMonth(month) {
-  
-  month.forEach(day => {
-    const todos = JSON.parse(localStorage.getItem(day.datum)) || false;
+  const firstDayOfMonth = month[0]['dag i vecka']-1,
+        calendar = document.querySelector(".cal-grid");
 
-    if (todos) {
-      todos.forEach(todo => {
-        console.log(todo);
-        
-      });
-    }
-  });
-
-
-  const dayInWeek = month[0]['dag i vecka'];
-
-  for(i = 0; i < dayInWeek; i++) {
-    // console.log('hej');
-    
+  for (i = 0; i < firstDayOfMonth; i++) {
+    createEmptyDayCard(calendar)
   }
+
   month.forEach(day => {
-    createDayCard(day)
+    createDayCard(day, calendar)
   });
   toggleSelectedGridItem();
   updateMonthInDOM();
@@ -112,11 +101,9 @@ function findIndexOfCurrentDay(myJson, today) {
   }
 }
 
-
-
 function updateMonthInDOM() {
 
-  const calendarStatus = JSON.parse(localStorage.getItem('calendarstatus')) 
+  const calendarStatus = JSON.parse(localStorage.getItem('calendarstatus'))
   
   const months = {
     number: [
@@ -148,17 +135,22 @@ function updateMonthInDOM() {
       "DECEMBER"
     ]
   };
+  document.querySelector('.unselected h2').innerHTML = 
+  months.name[calendarStatus[1] % months.name.length];
 
   document.querySelector(".month").innerHTML =
     months.name[calendarStatus[1] % months.name.length];
   document.querySelector(".year").innerHTML = calendarStatus[0];
 }
 
-function test() {
+function createEmptyDayCard(calendar) {
+  const div = document.createElement('div');
 
+  div.classList.add('empty-item')
+  calendar.append(div)
 }
 
-function createDayCard(dag) {
+function createDayCard(dag, calendar) {
   const div = document.createElement("div"),
     h5 = document.createElement("h5"),
     p = document.createElement("p"),
@@ -186,7 +178,7 @@ function createDayCard(dag) {
     div.append(helgdag)
   }
   h5.append(dag.datum.split("-")[2]);
-  document.querySelector(".cal-grid").append(div);
+  calendar.append(div);
   addTodosToDayCard(ul, dag)
 }
 
