@@ -78,16 +78,21 @@ function clearCalendarMonth() {
 }
 
 function buildCalendarMonth(month) {
-  const firstDayOfMonth = month[0]['dag i vecka']-1,
-        calendar = document.querySelector(".cal-grid");
+  const firstDayOfMonthIndex = month[0]['dag i vecka']-1,
+        lastDayOfMonthIndex = month[month.length-1]['dag i vecka'],
+        calendar = document.querySelector(".cal-grid");        
 
-  for (i = 0; i < firstDayOfMonth; i++) {
+  for (i = 0; i < firstDayOfMonthIndex; i++) {
     createEmptyDayCard(calendar)
   }
-
   month.forEach(day => {
     createDayCard(day, calendar)
   });
+
+  for (i = lastDayOfMonthIndex; i < 7; i++) {
+    createEmptyDayCard(calendar)
+  }
+
   toggleSelectedGridItem();
   updateMonthInDOM();
 }
