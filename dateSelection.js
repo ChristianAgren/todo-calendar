@@ -49,7 +49,7 @@ function toggleSidebarDateSelection(targetDate) {
 
 function buildSidebarDate(targetDate) {
   const selectedDateTitle = document.querySelector('.selected-date h3'),
-        selectedDayOfTheWeek = document.querySelector('.selected-date h1'),
+        selectedDayOfTheWeek = document.querySelector('.selected-date h2'),
         selectedDateHoliday = document.querySelector('.selected-date p'),
         selectedDateInfoArray = JSON.parse(localStorage.getItem('dayOfTheWeek'));
 
