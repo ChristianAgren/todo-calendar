@@ -1,7 +1,9 @@
 window.addEventListener("load", init);
 
 function init() {
-  logData();
+  updateMonth();
+  // defineToday();
+  addStaticEventListeners();
   defineClock();
   initTODOs();
 }
