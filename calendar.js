@@ -1,38 +1,95 @@
-async function logData() {
-
-  const
-    dateObj = new Date(),
-    year = dateObj.getFullYear(),
-    monthIndex = dateObj.getMonth(),
-    response = await fetch(`https://api.dryg.net/dagar/v2.1/${year}`),
-    myJson = await response.json();
-
-  defineToday(myJson, dateObj);
-  updateMonth(myJson, monthIndex, year);
-  mouseEvents(myJson, monthIndex, year);
-
+async function updateMonth() {
+  const currentCalendarMonth = await defineAPI();
+  clearCalendarMonth();
+  buildCalendarMonth(currentCalendarMonth);
 }
 
-function defineToday(myJson, dateObj) {
-  let
-  day = dateObj.getDate(),
-  month = dateObj.getMonth() + 1,
-  year = dateObj.getFullYear(),
-  today;
-  
-  month = (month < 10) ? "0" + month : month;
-  day = (day < 10) ? "0" + day : day;
-  
-  today = year + "-" + month + "-" + day;
+async function defineAPI() {
 
-  const indexOfCurrentDay = findIndexOfCurrentDay(myJson, today),
-        currentDayInfo = myJson.dagar[indexOfCurrentDay],
-        dayOfWeek = currentDayInfo.veckodag,
-        helgdag = currentDayInfo.helgdag || 'Inte en helgdag!',
-        dayInfoToLocalstorage = [dayOfWeek, helgdag];
-  
-  localStorage.setItem('selectedDay', JSON.stringify(today))
-  localStorage.setItem('dayOfTheWeek', JSON.stringify(dayInfoToLocalstorage ))
+  const date = new Date(),
+        calendarActive = JSON.parse(localStorage.getItem('calendarstatus')) || false,
+        year = (calendarActive) ? calendarActive[0] : date.getFullYear(),
+        month = (calendarActive) ? calendarActive[1] : date.getMonth();
+
+        let   day = date.getDate();
+              day = (day < 10) ? "0" + day : day
+        
+  const today = `${date.getFullYear()}-${date.getMonth()+1}-${day}`;
+          
+  localStorage.setItem('calendarstatus', JSON.stringify([year, month]))
+          
+  const response = await fetch(`https://api.dryg.net/dagar/v2.1/${year}/${month+1}`),
+        myJson = await response.json();
+          
+  defineToday(myJson, today)
+
+  return myJson.dagar
+}
+
+function addStaticEventListeners() {
+  let buttons = document.querySelectorAll(".cal-header button");
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const currentLocation = JSON.parse(localStorage.getItem('calendarstatus'));
+            
+      let   year = currentLocation[0],
+            month = currentLocation[1];      
+
+      if (event.target.id === 'left') {
+        if (month === 0) {
+          month = 11
+          year--
+        }
+        else{
+          month--
+        }
+        localStorage.setItem('calendarstatus', JSON.stringify([year, month]))
+      }
+      else {
+        if (month === 11) {
+          month = 0
+          year++
+        }
+        else{
+          month++
+        }
+        localStorage.setItem('calendarstatus', JSON.stringify([year, month]))
+      }
+      updateMonth()
+    })
+  });
+}
+
+function clearCalendarMonth() {
+  let clearArr = document.querySelectorAll(".grid-item");
+
+  clearArr.forEach(day => {
+    day.parentNode.removeChild(day);
+  });
+}
+
+function buildCalendarMonth(month) {
+  month.forEach(day => {
+    createDayCard(day)
+  });
+  toggleSelectedGridItem();
+  updateMonthInDOM();
+}
+
+function defineToday(myJson, today) {
+  const checkLocalstorage = JSON.parse(localStorage.getItem('dayOfTheWeek')) || false
+
+  if (!checkLocalstorage) {
+    localStorage.setItem('selectedDay', JSON.stringify(today))
+    const indexOfCurrentDay = findIndexOfCurrentDay(myJson, today),
+          currentDayInfo = myJson.dagar[indexOfCurrentDay],
+          dayOfWeek = currentDayInfo.veckodag,
+          helgdag = currentDayInfo.helgdag || 'Inte en helgdag!',
+          dayInfoToLocalstorage = [dayOfWeek, helgdag];
+    localStorage.setItem('dayOfTheWeek', JSON.stringify(dayInfoToLocalstorage ))  
+          
+  }
 }
 
 function findIndexOfCurrentDay(myJson, today) {
@@ -44,19 +101,12 @@ function findIndexOfCurrentDay(myJson, today) {
   }
 }
 
-function buildCalendar(myJson, months, monthIndex) {
-  myJson.dagar.forEach(dag => {
-    if (
-      dag.datum.split("-")[1] ===
-      months.number[monthIndex % months.number.length]
-    ) {
-      createDayCard(dag);
-    }
-  });
-  toggleSelectedGridItem();
-}
 
-function updateMonth(myJson, monthIndex, year) {
+
+function updateMonthInDOM() {
+
+  const calendarStatus = JSON.parse(localStorage.getItem('calendarstatus')) 
+  
   const months = {
     number: [
       "01",
@@ -89,18 +139,8 @@ function updateMonth(myJson, monthIndex, year) {
   };
 
   document.querySelector(".month").innerHTML =
-    months.name[monthIndex % months.number.length];
-  document.querySelector(".year").innerHTML = year;
-
-  buildCalendar(myJson, months, monthIndex);
-}
-
-function clearCalendar() {
-  let clearArr = document.querySelectorAll(".grid-item");
-
-  clearArr.forEach(day => {
-    day.parentNode.removeChild(day);
-  });
+    months.name[calendarStatus[1] % months.name.length];
+  document.querySelector(".year").innerHTML = calendarStatus[0];
 }
 
 function createDayCard(dag) {
@@ -108,7 +148,7 @@ function createDayCard(dag) {
     h5 = document.createElement("h5"),
     p = document.createElement("p"),
     ul = document.createElement('ul'),
-    activeDay = JSON.parse(localStorage.getItem('selectedDay')) || undefined;
+    activeDay = JSON.parse(localStorage.getItem('selectedDay'));
     
 
   div.classList.add("grid-item");
@@ -120,7 +160,7 @@ function createDayCard(dag) {
 
   if (activeDay === dag.datum) {
     div.classList.add("active-item")
-    updateTodolistInDOM(JSON.parse(localStorage.getItem('selectedDay')))
+    updateTodolistInDOM(activeDay)
     toggleSidebarDateSelection(activeDay)
   }
 
@@ -131,36 +171,24 @@ function createDayCard(dag) {
     div.append(helgdag)
   }
   h5.append(dag.datum.split("-")[2]);
-
   document.querySelector(".cal-grid").append(div);
+  addTodosToDayCard(ul, dag)
 }
 
-function mouseEvents(myJson, monthIndex, year) {
-  let buttons = document.querySelectorAll(".cal-header button");
+function addTodosToDayCard(ul, dag) {
+  const localstorageTodoArray = JSON.parse(localStorage.getItem(dag.datum)) || undefined
 
-  (monthIndex = 11), (year = 2019);
-
-  buttons.forEach(button => {
-    button.addEventListener("click", function (event) {
-      clearCalendar();
-
-      if (event.target.id === "left") {
-        monthIndex--;
-        if (monthIndex < 0) {
-          monthIndex = 11;
-          year--;
-        }
-
-        updateMonth(myJson, monthIndex, year);
-      } else if (event.target.id === "right") {
-        monthIndex++;
-        if (monthIndex > 11) {
-          monthIndex = 0;
-          year++;
-        }
-
-        updateMonth(myJson, monthIndex, year);
-      }
-    });
-  });
+  if (localstorageTodoArray != undefined) {
+    if (localstorageTodoArray.length < 5) {
+      localstorageTodoArray.forEach(todo => {
+        const li = document.createElement('li')
+        ul.append(li)
+      });
+    }
+    else {
+      const li = document.createElement('li')
+      li.append(localstorageTodoArray.length)
+      ul.append(li)
+    }
+  }
 }
