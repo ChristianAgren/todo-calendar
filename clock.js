@@ -4,12 +4,13 @@
  */
 function defineClock() {
     const   date = new Date(),
-            day = date.getDate(),
+            year = date.getFullYear(),
             month = date.getMonth() + 1,
+            day = date.getDate(),
             hours = date.getHours(),
             mins = date.getMinutes();            
 
-    buildClock(day, month, hours, mins)
+    buildClock(day, month, hours, mins, year)
 }
 
 /**
@@ -19,13 +20,13 @@ function defineClock() {
  * @param {Number} hours Time in hours generated from date function
  * @param {Number} mins Time in minutes generated from date function
  */
-function buildClock(day, month, hours, mins) {
+function buildClock(day, month, hours, mins, year) {
     hours = (hours < 10) ? "0" + hours : hours;
     mins = (mins < 10) ? "0" + mins : mins;
     month = (month < 10) ? "0" + month : month;
     day = (day < 10) ? "0" + day : day;
 
-    const time = month + "-" + day + " " + hours + ":" + mins;
+    const time = hours + ":" + mins  + "\n" + year + "-" + month + "-" + day;
     showClock(time)
 }
 
