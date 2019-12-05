@@ -63,16 +63,15 @@ main {
   color: #fefefe60;
 }
 
-
-.grid-item {
-    min-height: 8rem;
-}
 .grid-item p {
     position: absolute;
     bottom:.5rem;
     
   display: block;
   text-align: center;
+}
+.grid-item h5 {
+  font-size: 4rem;
 }
 
 .clock {
