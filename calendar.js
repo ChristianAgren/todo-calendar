@@ -34,17 +34,8 @@ function addStaticEventListeners() {
       
   
   toggleCalButton.addEventListener("click", function () {
-    $(".calendar").toggleClass("short-mode")
-
-    if($(".short-mode").css("display") === undefined) {
-      $(".todo-list").hide()
-      $(".add-todo").hide()
-    }
-    else {
-      $(".todo-list").show()
-      $(".add-todo").show()
-    }
-
+    $(".calendar").toggle()
+    $(".cal-toggle").toggleClass("short-mode")
   })
   
   buttons.forEach(button => {
