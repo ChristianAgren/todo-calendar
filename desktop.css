@@ -25,6 +25,9 @@ main {
   display: grid !important;
   grid-template-rows: 5% 3% 85%;
 }
+.cal-header {
+  justify-content: center;
+}
 
 .sidebar-heading {
   margin-top: 3rem;
@@ -50,7 +53,7 @@ main {
   margin-bottom: 1rem;
 }
 .date-selector h3 {
-  font-size: 4vw;
+  font-size: 3.6vw;
   line-height: 2vw;
 }
 

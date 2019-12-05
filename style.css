@@ -9,7 +9,8 @@
 /*
     font-family: 'Oxygen', sans-serif;
     font-family: 'Nunito Sans', sans-serif;
-    */
+    
+  */
 
 *,
 *::before,
@@ -26,7 +27,7 @@ html {
 }
 body {
   background: #2c3235;
-  
+
   overflow: hidden;
 }
 main {
@@ -37,7 +38,8 @@ main {
 
   display: grid;
 }
-  
+
 h1 {
-  margin: .5rem 1rem;
+  font-size: 1.5rem;
+  margin: 0.5rem 1rem;
 }
