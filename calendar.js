@@ -166,8 +166,8 @@ function mouseEvents(myJson, monthIndex, year) {
       }
     });
   });
+  
   toggleCalButton.addEventListener("click", function () {
-    console.log("SAEF");
-    $(".calendar").toggle(0)
+    $(".calendar").slideToggle(250)
   })
 }
