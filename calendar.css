@@ -2,16 +2,23 @@
 
 .calendar {
   position: absolute;
-  top:40%;
+  top: 40%;
   bottom: 0;
   left: 0;
   right: 0;
 
   display: grid;
-  grid-template-rows: 10% 5% 80%;
-
+  grid-template-rows: 10% 5% 75%;
+  
   background: linear-gradient(to top, #ddd, #ccc);
   background: #d6d6d6;
+}
+
+.short-mode {
+  background: #00f2f2;
+  
+  margin-top: 95%;
+  grid-template-rows: 100%;
 }
 
 .cal-header {
@@ -104,6 +111,7 @@
 }
 .empty-item {
   opacity: .5;
+  cursor: help;
 }
 
 div.active-item {
@@ -145,6 +153,11 @@ div.active-item {
 
   display: flex;
 }
+.grid-item ul li:not(:first-child) {
+  display: none;
+}
+
 .grid-item ul li::before{
   content: "\25cf";
 }
+

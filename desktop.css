@@ -76,6 +76,8 @@ main {
 }
 
 .clock {
+    display: block;
+
     padding: .5rem;
     text-align: center;
 }

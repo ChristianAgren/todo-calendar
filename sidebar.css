@@ -213,7 +213,7 @@
 /* CLOCK */
 
 .clock {
-
+  display: none;
   font-family: 'Titillium Web', sans-serif;
 
 
@@ -233,10 +233,11 @@
   right: 0;
   z-index: 1;
 
+
   padding: 0.5rem;
 
   border: none;
-  background: #f55;
+  background: #fff0;
   color: #fefefe;
 
   cursor: pointer;
