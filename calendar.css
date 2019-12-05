@@ -2,7 +2,7 @@
 
 .calendar {
   position: absolute;
-  top:60%;
+  top:30%;
   bottom: 0;
   left: 0;
   right: 0;
@@ -37,9 +37,6 @@
   justify-content: center;
   align-items: center;
 }
-.year-month > * {
-  /* border: 1px solid red; */
-}
 .year-month h5 {
   text-align: right;
   font-size: 1rem;
@@ -66,13 +63,14 @@
 
 .grid-item,
 div.active-item {
+  position: relative;
   margin: 0.2rem;
 
   background: #fff;
   border-radius: 0.5rem;
 
   display: flex;
-
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -82,7 +80,6 @@ div.active-item {
 
 div.active-item {
   box-shadow: inset .5rem .5rem 0 0 #2ccd4d;
-  text-shadow: 0rem 0rem #;
 }
 
 .grid-item h5,
@@ -92,14 +89,10 @@ div.active-item h5 {
 .grid-item p,
 div.active-item p {
   display: none;
-  /* position: absolute; */
-  top: 0.2rem;
   text-align: center;
 }
 
 .grid-item .helgdag {
-  position: absolute;
-  top: 60%;
   width: 100%;
   font-size: 0.7rem;
 }

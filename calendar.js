@@ -27,8 +27,14 @@ async function defineAPI() {
 }
 
 function addStaticEventListeners() {
-  let buttons = document.querySelectorAll(".cal-header button");
-
+  const buttons = document.querySelectorAll(".cal-header button"),
+    toggleCalButton = document.querySelector(".cal-toggle");
+      
+  
+  toggleCalButton.addEventListener("click", function () {
+    $(".calendar").slideToggle(250)
+  })
+  
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       const currentLocation = JSON.parse(localStorage.getItem('calendarstatus'));
@@ -177,7 +183,7 @@ function createDayCard(dag) {
 
 function addTodosToDayCard(ul, dag) {
   const localstorageTodoArray = JSON.parse(localStorage.getItem(dag.datum)) || undefined
-
+  
   if (localstorageTodoArray != undefined) {
     if (localstorageTodoArray.length < 5) {
       localstorageTodoArray.forEach(todo => {
@@ -192,3 +198,5 @@ function addTodosToDayCard(ul, dag) {
     }
   }
 }
+
+  
