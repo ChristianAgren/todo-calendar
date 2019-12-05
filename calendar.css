@@ -8,8 +8,10 @@
   right: 0;
 
   display: grid;
-  grid-template-rows: 10% 85%;
-  background: #edf0f1;
+  grid-template-rows: 10% 5% 80%;
+
+  background: linear-gradient(to top, #ddd, #ccc);
+  background: #d6d6d6;
 }
 
 .cal-header {
@@ -24,7 +26,25 @@
   align-items: center;
 }
 
+.week {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+
+  margin: 0 .5rem;
+
+  grid-template-columns: repeat(7, 1fr);
+}
+.week * {
+  padding: .2rem;
+}
+.weekday-desk {
+  display: none;
+}
+
 .cal-grid {
+  margin: 0 .5rem;
+
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: auto;
@@ -61,8 +81,7 @@
 
 /* GRID-ITEMS (VECKODAGAR) */
 
-.grid-item,
-div.active-item {
+.grid-item, .empty-item {
   position: relative;
   margin: 0.2rem;
 
@@ -77,27 +96,37 @@ div.active-item {
   cursor: pointer;
   transition: 0.25s ease;
 }
+.empty-item {
+  opacity: .5;
+}
 
 div.active-item {
   box-shadow: inset .5rem .5rem 0 0 #2ccd4d;
 }
 
-.grid-item h5,
-div.active-item h5 {
-  font-size: 5vw;
+.grid-item h5{
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+
+  font-size: 4vw;
 }
-.grid-item p,
-div.active-item p {
+.grid-item p{
   display: none;
   text-align: center;
 }
 
+.grid-item p:first-child {
+  display: none;
+}
+.grid-item p:last-child {
+  margin-bottom: 1rem;
+}
 .grid-item .helgdag {
   width: 100%;
   font-size: 0.7rem;
 }
-.grid-item ul,
-div.active-item ul {
+.grid-item ul{
   position: absolute;
   bottom: 0;
 
@@ -106,7 +135,6 @@ div.active-item ul {
 
   display: flex;
 }
-.grid-item ul li::before,
-div.active-item ul li::before {
+.grid-item ul li::before{
   content: "\25cf";
 }

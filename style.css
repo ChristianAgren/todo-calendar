@@ -37,3 +37,8 @@ main {
 
   display: grid;
 }
+  
+h1 {
+  margin: 1rem 1rem;
+  line-height: 2rem;
+}

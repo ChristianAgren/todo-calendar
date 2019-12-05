@@ -1,78 +1,78 @@
-
-
 main {
-    grid-template-columns: 25% auto;
-    grid-template-rows: auto;
+  grid-template-columns: 25% auto;
+  grid-template-rows: auto;
 }
 .sidebar {
-    height: 100vh;
+  height: 100vh;
 }
 .todo-list {
-    height: 70%;
+  height: 70%;
 }
 .cal-toggle {
-    display: none;
+  display: none;
 }
 
+.weekday-desk {
+  display: block;
+}
+.weekday-mob {
+  display: none;
+}
 .calendar {
   position: relative;
   top: 0;
-  
+
   display: grid !important;
-  grid-template-rows: 5% 90%;
+  grid-template-rows: 5% 3% 85%;
 }
 
 .sidebar-heading {
-    margin-top: 3rem;
+  margin-top: 3rem;
 
-    width: 100%;
-    padding: 1rem;
+  width: 100%;
+  padding: 1rem;
 
-    text-align: center;
+  text-align: center;
 }
 
 .date-selector {
-    margin: 1.5rem;
-    width: 80%;
-    min-height: 8rem;
-
-    
-    line-height: 1.6rem;
-    text-align: center;
-    
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 80%;
 }
 
 .selected-date {
-    display: none;
-    border: none;
+  display: none;
+  border: none;
 }
 
-.unselected {
-    display: flex;
-    border: .1rem dashed rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.06);
-}
 
-.date-selector h1 {
-    margin: 1rem 1rem;
-    line-height: 2rem;
+.date-selector h2 {
+  font-size: 2vw;
+  margin-bottom: 1rem;
 }
 .date-selector h3 {
-    font-size: 4vw;
-    line-height: 2vw;
+  font-size: 4vw;
+  line-height: 2vw;
 }
 
 .date-selector > p {
-    padding: 1rem;
+  padding: 1rem;
 
-    color: #fefefe60;
+  color: #fefefe60;
 }
 
-.grid-item p,
-div.active-item p {
-    display: block;
+
+.grid-item {
+    min-height: 8rem;
+}
+.grid-item p {
+    position: absolute;
+    bottom:.5rem;
+    
+  display: block;
   text-align: center;
+}
+
+.clock {
+    padding: .5rem;
+    text-align: center;
 }
