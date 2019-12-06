@@ -1,7 +1,9 @@
 async function updateMonth() {
-  const currentCalendarMonth = await defineAPI();
+  const currentCalendarMonth = await defineAPI(),
+        targetDate = JSON.parse(localStorage.getItem('selectedDay')) ;
   clearCalendarMonth();
-  buildCalendarMonth(currentCalendarMonth);  
+  buildCalendarMonth(currentCalendarMonth);
+  updateTodolistInDOM(targetDate)
 }
 
 async function defineAPI() {
@@ -40,7 +42,8 @@ function addStaticEventListeners() {
   
   buttons.forEach(button => {
     button.addEventListener('click', () => {
-      const currentLocation = JSON.parse(localStorage.getItem('calendarstatus'));
+      const currentLocation = JSON.parse(localStorage.getItem('calendarstatus')),
+            targetDate = JSON.parse(localStorage.getItem('selectedDay'));
             
       let   year = currentLocation[0],
             month = currentLocation[1];      
@@ -65,6 +68,7 @@ function addStaticEventListeners() {
         }
         localStorage.setItem('calendarstatus', JSON.stringify([year, month]))
       }
+      // updateTodolistInDOM(targetDate)
       updateMonth()
     })
   });

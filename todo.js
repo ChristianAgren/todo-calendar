@@ -1,13 +1,10 @@
-/**
- * Initialises Todo on load
- */
+
 function initTODOs() {
+    const targetDate = JSON.parse(localStorage.getItem('selectedDay'));
     addSaveTodoButton()
+    updateTodolistInDOM(targetDate)
 }
 
-/**
- * Loads eventlistener on save button for todos and saves input value to localstorage
- */
 function addSaveTodoButton() {
     const input = document.querySelector('.add-todo input'),
         saveButton = document.querySelector('.add-todo button');
@@ -21,43 +18,61 @@ function addSaveTodoButton() {
             if ((targetDate != undefined) && (targetDate != 'not available')) {
                 localStrList.unshift(todo)
                 localStorage.setItem(targetDate, JSON.stringify((localStrList)))
-                updateTodolistInDOM(targetDate)
                 updateMonth()
+                updateTodolistInDOM(targetDate)
             }
         }
     })
 }
 
-/**
- * Updates all todos for a date on function call
- * @param {String} targetDate The date that has been selected by user
- */
 function updateTodolistInDOM(targetDate){
-    const   DOMList = document.querySelector('.todo-list');
+    const   DOMList = document.querySelector('.specific');
     removeTodosFromDOM(DOMList)
     addTodosToDOM(DOMList, targetDate)
 }
 
-/**
- * Removes all todos from the DOM
- * @param {Element} DOMList The container for all todos
- */
 function removeTodosFromDOM(DOMList){
-    const   lis = document.querySelectorAll('.todo-list li');
+    const   lis = document.querySelectorAll('.specific li'),
+            global = document.querySelector('.global'),
+            globalListCards = document.querySelectorAll('.global > div');
+    
+
+    globalListCards.forEach(element => {
+        global.removeChild(element)
+    })
 
     lis.forEach(todo => {
         DOMList.removeChild(todo)
     });
 }
 
-/**
- * Loads all todos from a date into the DOM on function call
- * @param {Element} DOMList The container for all todos
- * @param {*} targetDate The date that has been selected by user
- */
 function addTodosToDOM(DOMList, targetDate) {
-
-    const todoList = JSON.parse(localStorage.getItem(targetDate))    
+    const todoList = JSON.parse(localStorage.getItem(targetDate))
+    
+    if (targetDate === 'unspecified') {
+        const month = JSON.parse(localStorage.getItem('apiMonth'));
+        
+        month.forEach(day => {
+            const todos = JSON.parse(localStorage.getItem(day.datum)) || false;
+            
+            if ((todos) && (todos.length != 0)) {
+                const globalTodos = document.querySelector('.global'),
+                        div = document.createElement('div'),
+                        p = document.createElement('p'),
+                        ul = document.createElement('ul');
+                
+                p.append(day.datum)
+                div.append(p,ul)
+                globalTodos.append(div)
+                todos.forEach(todo => {
+                    const li = document.createElement('li');
+                    li.append(todo)
+                    ul.append(li)
+                });
+            }
+                                    
+        });
+    }
     
     if (todoList != null) {
 
