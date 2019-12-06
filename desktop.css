@@ -5,9 +5,7 @@ main {
 .sidebar {
   height: 100vh;
 }
-.todo-list {
-  height: 70%;
-}
+
 .cal-toggle {
   display: none;
 }
@@ -47,7 +45,6 @@ main {
   border: none;
 }
 
-
 .date-selector h2 {
   font-size: 2vw;
   margin-bottom: 1rem;
@@ -79,4 +76,8 @@ main {
 
     padding: .5rem;
     text-align: center;
+}
+
+.grid-item ul li:not(:first-child) {
+  display: block;
 }
