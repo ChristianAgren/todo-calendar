@@ -237,7 +237,7 @@
   padding: 0.5rem;
 
   border: none;
-  background: linear-gradient(to top, #333f, #2c3235);
+  background: linear-gradient(to top, #252a2e 50%, #252a2e00);
   color: #fefefe;
 
   cursor: pointer;
